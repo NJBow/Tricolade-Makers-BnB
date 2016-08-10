@@ -25,7 +25,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/api/v1', routes);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
@@ -61,3 +60,5 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
+//change
