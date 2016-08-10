@@ -70,10 +70,10 @@ describe('API Routes', function() {
     });
   });
 
-  describe('POST /api/v1/spaces', function() {
+  describe('POST /spaces', function() {
   it('should add a space', function(done) {
     chai.request(server)
-    .post('/api/v1/spaces')
+    .post('/spaces')
     .send({
       name: 'Seaside bungalow',
       description: 'With sea views',
