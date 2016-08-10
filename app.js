@@ -5,10 +5,25 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var userModel = require('./models/user');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+//Database connection setup
+var knex = require('knex')({
+  client: 'pg',
+  connection: {
+    host     : 'localhost',
+    port     : '5432',
+    database : 'makers_bnb_test',
+    charset  : 'UTF8_GENERAL_CI'
+  }
+});
+
+var bookshelf = require('bookshelf')(knex);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
