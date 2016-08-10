@@ -1,3 +1,4 @@
+/*
 process.env.NODE_END = 'test';
 var environment = 'test';
 //might need to require something for the database here too.
@@ -22,3 +23,4 @@ describe("Index page", function() {
   });
 
 });
+*/
