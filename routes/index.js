@@ -29,5 +29,19 @@ router.get('/spaces/:id', function(req, res, next) {
   });
 });
 
+// *** add space *** //
+router.post('/spaces', function(req, res, next) {
+  queries.addSingle(req.body)
+  .then(function(spaceID) {
+    return queries.getSingle(spaceID);
+  })
+  .then(function(space) {
+    res.status(200).json(space);
+  })
+  .catch(function(error) {
+    next(error);
+  });
+});
+
 
 module.exports = router;

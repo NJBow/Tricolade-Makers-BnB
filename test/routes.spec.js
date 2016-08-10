@@ -12,8 +12,8 @@ chai.use(chaiHttp);
 describe('API Routes', function() {
 
   beforeEach(function(done) {
-    knex.migrate.rollback()
-    .then(function() {
+     knex.migrate.rollback()
+     .then(function() {
       knex.migrate.latest()
       .then(function() {
         return knex.seed.run()
@@ -68,6 +68,32 @@ describe('API Routes', function() {
         done();
       });
     });
+  });
+
+  describe('POST /api/v1/spaces', function() {
+  it('should add a space', function(done) {
+    chai.request(server)
+    .post('/api/v1/spaces')
+    .send({
+      name: 'Seaside bungalow',
+      description: 'With sea views',
+      price_per_night: 400
+    })
+    .end(function(err, res) {
+      console.log(err);
+      expect(res).to.have.status(200);
+      expect(res).to.be.json; // jshint ignore:line
+      expect(res.body).to.be.a('object');
+      expect(res.body).to.have.property('name');
+      expect(res.body.name).to.equal('Seaside bungalow');
+      expect(res.body).to.have.property('description');
+      expect(res.body.description).to.equal('With sea views');
+      expect(res.body).to.have.property('price_per_night');
+      expect(res.body.price_per_night).to.equal(400);
+      done();
+
+    });
+  });
   });
 
 });

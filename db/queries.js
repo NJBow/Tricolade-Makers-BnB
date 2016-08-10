@@ -14,7 +14,12 @@ function getSingle(spaceID) {
   return Spaces().where('id', parseInt(spaceID)).first();
 }
 
+function addSingle(space) {
+  return Spaces().insert(space, 'id');
+}
+
 module.exports = {
   getAll: getAll,
-  getSingle: getSingle
+  getSingle: getSingle,
+  addSingle: addSingle
 };
