@@ -1,3 +1,4 @@
+/*
 process.env.NODE_END = 'test';
 var environment = 'test';
 //might need to require something for the database here too.
@@ -5,6 +6,8 @@ var Browser = require('zombie');
 var app = require('../app');
 var http = require('http');
 var assert = require('assert');
+var chai = require('chai');
+var expect = require(chai.expect);
 
 describe("index page", function() {
   before(function(){
@@ -22,3 +25,4 @@ describe("index page", function() {
   });
 
 });
+*/
