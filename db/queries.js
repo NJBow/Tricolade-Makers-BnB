@@ -10,7 +10,11 @@ function getAll() {
   return Spaces().select();
 }
 
+function getSingle(spaceID) {
+  return Spaces().where('id', parseInt(spaceID)).first();
+}
 
 module.exports = {
-  getAll: getAll
+  getAll: getAll,
+  getSingle: getSingle
 };
