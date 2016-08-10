@@ -34,7 +34,7 @@ describe('API Routes', function() {
   describe('Get all Spaces', function(){
     it('should return all spaces', function(done) {
         chai.request(server)
-        .get('/api/v1/spaces')
+        .get('/spaces')
         .end(function(err, res) {
         expect(res).to.have.status(200);
         expect(res).to.be.json; // jshint ignore:line
@@ -51,10 +51,10 @@ describe('API Routes', function() {
     });
   });
 
-  describe('GET /api/v1/spaces/:id', function() {
+  describe('GET /spaces/:id', function() {
     it('should return a single space', function(done) {
       chai.request(server)
-      .get('/api/v1/spaces/2')
+      .get('/spaces/2')
       .end(function(err, res) {
         expect(res).to.have.status(200);
         expect(res).to.be.json; // jshint ignore:line
