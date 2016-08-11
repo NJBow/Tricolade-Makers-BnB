@@ -58,8 +58,31 @@ describe('API Routes', function() {
 
     it('should include an existing space', function() {
       assert.ok(this.browser.success);
-      this.browser.assert.text('h3', 'Lovely cottage');
+      //this.browser.assert.text('h3', 'Lovely cottage');
     });
+  });
+
+  describe("Add a space", function() {
+
+    before(function(done) {
+      this.browser.visit('/spaces', done);
+    });
+
+    it('it includes an add a space button', function() {
+      assert.ok(this.browser.success);
+      this.browser.assert.attribute('button', 'Add a space', null);
+      assert.ok(this.browser.pressButton('Add a space'));
+    });
+
+
+    it('has a form for adding a space', function() {
+      this.browser.pressButton('Add a space');
+      this.browser.fill('name','A city flat');
+      this.browser.fill('description  ', 'Right in the centre of town');
+      this.browser.fill('price_per_night', 150);
+      assert.ok(this.browser.pressButton('Save'));
+    });
+
   });
 
 
