@@ -38,10 +38,11 @@ describe('API Routes', function() {
     this.browser = new Browser({ site: "http://localhost:3000"});
   });
 
-  describe("Viewing spaces", function() {
+   describe("Viewing spaces", function() {
 
     before(function(done) {
       this.browser.visit('/', done);
+
     });
 
     it('should include Express', function() {
@@ -71,19 +72,24 @@ describe('API Routes', function() {
     it('it includes an add a space button', function() {
       assert.ok(this.browser.success);
       this.browser.assert.attribute('button', 'Add a space', null);
-      assert.ok(this.browser.pressButton('Add a space'));
+      this.browser.pressButton('Add a space');
+    });
+  });
+
+  describe('There is a form to add a space', function() {
+
+    before(function(done) {
+      this.browser.visit('/addspace', done);
     });
 
-
     it('has a form for adding a space', function() {
-      this.browser.pressButton('Add a space');
       this.browser.fill('name','A city flat');
       this.browser.fill('description  ', 'Right in the centre of town');
       this.browser.fill('price_per_night', 150);
       assert.ok(this.browser.pressButton('Save'));
     });
-
   });
+
 
 
 });

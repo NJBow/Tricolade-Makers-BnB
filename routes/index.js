@@ -22,7 +22,7 @@ router.get('/spaces', function(req, res, next) {
 
 //GET add space //
 router.get('/addspace', function(req, res, next) {
-  res.render('newSpace');
+  res.render('addspace');
 });
 
 
