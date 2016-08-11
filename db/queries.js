@@ -18,8 +18,13 @@ function addSingle(space) {
   return Spaces().insert(space, 'id');
 }
 
+function updateSpace(spaceID, updates) {
+  return Spaces().where('id', parseInt(spaceID)).update(updates);
+}
+
 module.exports = {
   getAll: getAll,
   getSingle: getSingle,
-  addSingle: addSingle
+  addSingle: addSingle,
+  updateSpace: updateSpace
 };

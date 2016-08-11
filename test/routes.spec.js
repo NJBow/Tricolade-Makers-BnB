@@ -96,4 +96,27 @@ describe('API Routes', function() {
   });
   });
 
+  describe('PUT /spaces/:id', function() {
+  it('should update a space', function(done) {
+    chai.request(server)
+    .put('/spaces/1')
+    .send({
+      description: 'A really nice cottage',
+      price_per_night: 150
+    })
+    .end(function(err, res) {
+      expect(res).to.have.status(200);
+      expect(res).to.be.json; // jshint ignore:line
+      expect(res.body).to.be.a('object');
+      expect(res.body).to.have.property('name');
+      expect(res.body.name).to.equal('Lovely cottage');
+      expect(res.body).to.have.property('description');
+      expect(res.body.description).to.equal('A really nice cottage');
+      expect(res.body).to.have.property('price_per_night');
+      expect(res.body.price_per_night).to.equal(150);
+      done();
+    });
+  });
+});
+
 });

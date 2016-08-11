@@ -43,5 +43,19 @@ router.post('/spaces', function(req, res, next) {
   });
 });
 
+// *** update show *** //
+router.put('/spaces/:id', function(req, res, next) {
+  queries.updateSpace(req.params.id, req.body)
+  .then(function() {
+    return queries.getSingle(req.params.id);
+  })
+  .then(function(space) {
+    res.status(200).json(space);
+  })
+  .catch(function(error) {
+    next(error);
+  });
+});
+
 
 module.exports = router;
