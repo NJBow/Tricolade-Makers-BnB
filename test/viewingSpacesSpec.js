@@ -58,7 +58,7 @@ describe('API Routes', function() {
 
     it('should include an existing space', function() {
       assert.ok(this.browser.success);
-      assert.equal(this.browser.text('h3'), 'Lovely cottage');
+      this.browser.assert.text('h3', 'Lovely cottage');
     });
   });
 

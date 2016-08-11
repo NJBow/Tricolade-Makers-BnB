@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Available <%= title %></h1>
+  </br>
+    <% spaces.forEach(function(space) { %>
+    <h2><%= space.name %> </h2>
+    <h3><%= space.description %> </h3>
+    <h4>Price per night: <%= space.price_per_night %> pounds</h4>
+    <% }); %>
+  </body>
+</html>

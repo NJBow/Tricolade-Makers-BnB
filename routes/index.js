@@ -11,7 +11,9 @@ router.get('/', function(req, res, next) {
 router.get('/spaces', function(req, res, next) {
   queries.getAll()
   .then(function(spaces) {
-    res.status(200).json(spaces);
+    res.render('spaces', { title: 'Spaces',
+                          spaces: spaces });
+    //res.status(200).json(spaces);
   })
   .catch(function(error) {
     next(error);
