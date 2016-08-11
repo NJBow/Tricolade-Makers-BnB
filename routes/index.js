@@ -57,5 +57,20 @@ router.put('/spaces/:id', function(req, res, next) {
   });
 });
 
+// *** delete show *** //
+router.delete('/spaces/:id', function(req, res, next) {
+  queries.getSingle(req.params.id)
+  .then(function(space) {
+    queries.deleteSpace(req.params.id)
+    .then(function() {
+      res.status(200).json(space);
+    })
+    .catch(function(error) {
+      next(error);
+    });
+  }).catch(function(error) {
+    next(error);
+  });
+});
 
 module.exports = router;

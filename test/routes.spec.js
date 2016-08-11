@@ -91,9 +91,8 @@ describe('API Routes', function() {
       expect(res.body).to.have.property('price_per_night');
       expect(res.body.price_per_night).to.equal(400);
       done();
-
-    });
-  });
+     });
+   });
   });
 
   describe('PUT /spaces/:id', function() {
@@ -115,8 +114,41 @@ describe('API Routes', function() {
       expect(res.body).to.have.property('price_per_night');
       expect(res.body.price_per_night).to.equal(150);
       done();
+      });
     });
   });
-});
+
+  describe('DELETE /spaces/:id', function() {
+    it('should delete a space', function(done) {
+      chai.request(server)
+      .delete('/spaces/1')
+      .end(function(err, res) {
+        expect(res).to.have.status(200);
+        expect(res).to.be.json; // jshint ignore:line
+        expect(res.body).to.be.a('object');
+        expect(res.body).to.have.property('name');
+        expect(res.body.name).to.equal('Lovely cottage');
+        expect(res.body).to.have.property('description');
+        expect(res.body.description).to.equal('An awesome little cottage');
+        expect(res.body).to.have.property('price_per_night');
+        expect(res.body.price_per_night).to.equal(100);
+        chai.request(server)
+        .get('/spaces')
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          expect(res).to.be.json; // jshint ignore:line
+          expect(res.body).to.be.a('array');
+          expect(res.body.length).to.equal(3);
+          expect(res.body[0]).to.have.property('name');
+          expect(res.body[0].name).to.equal('Awesome penthouse');
+          expect(res.body[0]).to.have.property('description');
+          expect(res.body[0].description).to.equal('A great penthouse');
+          expect(res.body[0]).to.have.property('price_per_night');
+          expect(res.body[0].price_per_night).to.equal(200);
+          done();
+        });
+      });
+    });
+  });
 
 });

@@ -22,9 +22,14 @@ function updateSpace(spaceID, updates) {
   return Spaces().where('id', parseInt(spaceID)).update(updates);
 }
 
+function deleteSpace(spaceID) {
+  return Spaces().where('id', parseInt(spaceID)).del();
+}
+
 module.exports = {
   getAll: getAll,
   getSingle: getSingle,
   addSingle: addSingle,
-  updateSpace: updateSpace
+  updateSpace: updateSpace,
+  deleteSpace: deleteSpace
 };
