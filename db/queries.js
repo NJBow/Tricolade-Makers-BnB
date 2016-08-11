@@ -7,6 +7,7 @@ function Spaces() {
 // *** queries *** //
 
 function getAll() {
+  console.log(1);
   return Spaces().select();
 }
 

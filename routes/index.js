@@ -18,6 +18,8 @@ router.get('/spaces', function(req, res, next) {
   });
 });
 
+
+
 //GET single space //
 router.get('/spaces/:id', function(req, res, next) {
   queries.getSingle(req.params.id)

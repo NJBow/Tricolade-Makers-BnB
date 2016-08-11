@@ -26,12 +26,12 @@ describe('API Routes', function() {
     });
   });
 
-  afterEach(function(done) {
-    knex.migrate.rollback()
-    .then(function() {
-      done();
-    });
-  });
+  // afterEach(function(done) {
+  //   knex.migrate.rollback()
+  //   .then(function() {
+  //     done();
+  //   });
+  // });
 
   before(function(){
     this.server = http.createServer(server).listen(3000);
