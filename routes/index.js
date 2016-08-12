@@ -66,6 +66,26 @@ router.put('/spaces/:id', function(req, res, next) {
   });
 });
 
+//** user sign up **//
+
+router.get('/users/new', function(req, res, next) {
+  res.render('users/new');
+});
+
+router.post('/users', function(req, res, next) {
+  queries.addUser(req.body)
+  .then(function(userID) {
+    return queries.getUser(userID);
+  })
+  .then(function(user) {
+    res.status(200).json(user);
+  })
+  .catch(function(error) {
+    next(error);
+  });
+});
+
+
 // *** delete show *** //
 router.delete('/spaces/:id', function(req, res, next) {
   queries.getSingle(req.params.id)
