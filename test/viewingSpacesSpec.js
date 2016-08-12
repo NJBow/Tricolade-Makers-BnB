@@ -85,11 +85,35 @@ describe('API Routes', function() {
     it('has a form for adding a space', function() {
       this.browser.fill('name','A city flat');
       this.browser.fill('description', 'Right in the centre of town');
-      this.browser.fill('ppn', 150);
+      this.browser.fill('price_per_night', 150);
       assert.ok(this.browser.pressButton('Save'));
     });
+
   });
 
+
+
+
+  // describe('There is a form to add a space', function(done) {
+  //
+  //
+  //   before(function(done) {
+  //     this.browser.visit('/addspace', done);
+  //     this.browser.fill('name','A city flat');
+  //     this.browser.fill('description', 'Right in the centre of town');
+  //     this.browser.fill('price_per_night', 150);
+  //     assert.ok(this.browser.pressButton('Save'));
+  //     this.browser.visit('/spaces/5', done);
+  //   });
+  //
+  //
+  //   it('adds a space', function() {
+  //     this.brower.visit('/spaces/5');
+  //     assert.ok(this.browser.success);
+  //     //this.browser.assert.text('h3', 'A city flat');
+  //   });
+  //
+  // });
 
 
 });
