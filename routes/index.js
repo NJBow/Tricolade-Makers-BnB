@@ -21,8 +21,8 @@ router.get('/spaces', function(req, res, next) {
 });
 
 //GET add space //
-router.get('/addspace', function(req, res, next) {
-  res.render('addspace');
+router.get('/spaces/new', function(req, res, next) {
+  res.render('spaces/new');
 });
 
 
@@ -46,6 +46,9 @@ router.post('/spaces', function(req, res, next) {
   queries.addSingle(req.body)
   .then(function(spaceID) {
     return queries.getSingle(spaceID);
+  })
+  .then(function() {
+    res.redirect('/spaces');
   })
   .then(function(space) {
     res.status(200).json(space);
