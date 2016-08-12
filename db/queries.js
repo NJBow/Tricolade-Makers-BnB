@@ -4,12 +4,16 @@ function Spaces() {
   return knex('spaces');
 }
 
+function Users() {
+  return knex('users');
+}
+
 // *** queries *** //
 
 function getAll() {
-  console.log(1);
   return Spaces().select();
 }
+
 
 function getSingle(spaceID) {
   return Spaces().where('id', parseInt(spaceID)).first();
@@ -27,10 +31,20 @@ function deleteSpace(spaceID) {
   return Spaces().where('id', parseInt(spaceID)).del();
 }
 
+function addUser(user) {
+  return Users().insert(user,'id');
+}
+
+function getUser(userID) {
+  return Users().where('id', parseInt(userID)).first();
+}
+
 module.exports = {
   getAll: getAll,
   getSingle: getSingle,
   addSingle: addSingle,
   updateSpace: updateSpace,
-  deleteSpace: deleteSpace
+  deleteSpace: deleteSpace,
+  addUser: addUser,
+  getUser: getUser
 };
