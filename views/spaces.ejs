@@ -12,7 +12,7 @@
     <h3><%= space.description %> </h3>
     <h4>Price per night: <%= space.price_per_night %> pounds</h4>
     <form>
-      <button type="submit" formmethod="get" formaction='/spaces/<%= space.id %>'>View a space</button>
+      <button type="submit" formmethod="get" formaction='/spaces/view/<%= space.id %>'>View a space</button>
     </form>
     <% }); %>
   <form>
