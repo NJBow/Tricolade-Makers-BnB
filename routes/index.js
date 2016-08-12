@@ -74,8 +74,8 @@ router.get('/users/new', function(req, res, next) {
 
 router.post('/users', function(req, res, next) {
   queries.addUser(req.body)
-  .then(function(userID) {
-    return queries.getUser(userID);
+  .then(function() {
+    res.redirect('/spaces');
   })
   .then(function(user) {
     res.status(200).json(user);
