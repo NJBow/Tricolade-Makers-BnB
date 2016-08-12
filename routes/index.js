@@ -28,11 +28,14 @@ router.get('/addspace', function(req, res, next) {
 
 
 //GET single space //
-router.get('/spaces/:id', function(req, res, next) {
+router.get('/spaces/view/:id', function(req, res, next) {
   queries.getSingle(req.params.id)
   .then(function(space) {
-    res.status(200).json(space);
+    res.render('spaces/view', {space: space});
   })
+  // .then(function(space) {
+  //   res.status(200).json(space);
+  // })
   .catch(function(error) {
     next(error);
   });
