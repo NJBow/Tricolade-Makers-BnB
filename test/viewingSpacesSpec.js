@@ -84,8 +84,8 @@ describe('API Routes', function() {
 
     it('has a form for adding a space', function() {
       this.browser.fill('name','A city flat');
-      this.browser.fill('description  ', 'Right in the centre of town');
-      this.browser.fill('price_per_night', 150);
+      this.browser.fill('description', 'Right in the centre of town');
+      this.browser.fill('ppn', 150);
       assert.ok(this.browser.pressButton('Save'));
     });
   });
